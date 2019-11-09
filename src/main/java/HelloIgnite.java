@@ -1,13 +1,9 @@
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.Ignition;
-import org.apache.ignite.configuration.IgniteConfiguration;
-
-import java.util.Collections;
 
 public class HelloIgnite {
     public static void main(String[] args) {
-        //IgniteConfiguration cnf = new IgniteConfiguration();
         try (Ignite ignite = Ignition.start()) {
             IgniteCache<Integer, String> cache = ignite.getOrCreateCache("myCacheName"); //создание кэша структуры ключ значение
             for (int i = 0; i < 100; i++)
