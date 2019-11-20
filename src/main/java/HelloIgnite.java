@@ -1,10 +1,12 @@
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.Ignition;
+import org.apache.ignite.configuration.IgniteConfiguration;
 
 public class HelloIgnite {
     public static void main(String[] args) {
-        try (Ignite ignite = Ignition.start()) {
+        IgniteConfiguration cfg = new IgniteConfiguration();
+        try (Ignite ignite = Ignition.start(cfg)) {
             IgniteCache<Integer, String> cache = ignite.getOrCreateCache("myCacheName"); //создание кэша структуры ключ значение
             for (int i = 0; i < 100; i++)
                 cache.put(i, Integer.toString(i)); //заполняем кэш данными где ключ от 0 до 100 и значение те же самое что и ключи только переводим из Integer в String.
